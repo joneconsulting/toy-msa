@@ -21,6 +21,7 @@ public class FirstServiceController {
         this.env = env;
     }
 
+    // GET http://localhost:12345/first-service/welcome
     @GetMapping("/welcome")
     public String welcome() {
         return "Welcome to the First service.";
