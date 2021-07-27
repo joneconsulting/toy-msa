@@ -10,7 +10,7 @@ spring:
     username: guest
     password: guest
   profiles:
-    active: native
+    active: git
   cloud:
     config:
       server:
@@ -20,12 +20,11 @@ spring:
         #          basedir: /Users/dowonlee/Desktop/Work/tmp/config-repo
         #          username: [username]
         #          password: [password]
-        native:
-          search-locations: file:///Users/dowonlee/Desktop/Work/native-file-repo
+#        native:
+#          search-locations: file:///Users/dowonlee/Desktop/Work/native-file-repo
 
 management:
   endpoints:
     web:
       exposure:
-        include: health, busrefresh
-
+        include: health, busrefresh, refresh, metrics

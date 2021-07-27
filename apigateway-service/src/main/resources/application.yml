@@ -11,19 +11,19 @@ eureka:
 spring:
   application:
     name: apigateway-service
-#  rabbitmq:
-#    host: 127.0.0.1
-#    port: 5672
-#    username: guest
-#    password: guest
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
   cloud:
     gateway:
-#      default-filters:
-      ##        - name: GlobalFilter
-      ##          args:
-      ##            baseMessage: Spring Cloud Gateway Global Filter
-      ##            preLogger: true
-      ##            postLogger: true
+      default-filters:
+        - name: GlobalFilter
+          args:
+            baseMessage: Spring Cloud Gateway Global Filter
+            preLogger: true
+            postLogger: true
       routes:
         - id: user-service
           uri: lb://USER-SERVICE
@@ -79,22 +79,22 @@ spring:
           predicates:
             - Path=/first-service/**
           filters:
-            - AddRequestHeader=first-request, first-request-header2
-            - AddResponseHeader=first-response, first-response-header2
-        #            - CustomFilter
+#            - AddRequestHeader=first-request, first-request-header2
+#            - AddResponseHeader=first-response, first-response-header2
+            - CustomFilter
         - id: second-service
           uri: lb://MY-SECOND-SERVICE
           predicates:
             - Path=/second-service/**
           filters:
-            - AddRequestHeader=second-request, second-request-header2
-            - AddResponseHeader=second-response, second-response-header2
-            #            - name: CustomFilter
-#            - name: LoggingFilter
-#              args:
-#                baseMessage: Hi, there.
-#                preLogger: true
-#                postLogger: true
+#            - AddRequestHeader=second-request, second-request-header2
+#            - AddResponseHeader=second-response, second-response-header2
+            - name: CustomFilter
+            - name: LoggingFilter
+              args:
+                baseMessage: Hi, there.
+                preLogger: true
+                postLogger: true
 
 #token:
 #  secret: user_token

@@ -1,6 +1,5 @@
 package com.example.userservice;
 
-import com.example.userservice.error.FeignErrorDecoder;
 import feign.Logger;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -26,7 +25,7 @@ public class UserServiceApplication {
     }
 
     @Bean
-//    @LoadBalanced
+    @LoadBalanced
     public RestTemplate getRestTemplate() {
         return new RestTemplate();
     }

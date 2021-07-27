@@ -22,7 +22,7 @@ spring:
     url: jdbc:h2:mem:testdb
     username: sa
     password:
-    data: classpath:post.sql
+#    data: classpath:post.sql
 
 eureka:
   instance:
