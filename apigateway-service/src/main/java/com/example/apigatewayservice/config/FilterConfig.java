@@ -1,16 +1,28 @@
 package com.example.apigatewayservice.config;
 
+import com.example.apigatewayservice.filter.AuthorizationHeaderFilter;
 import org.springframework.cloud.gateway.route.RouteLocator;
 import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.core.env.Environment;
 
-//@Configuration
+@Configuration
 public class FilterConfig {
-//    @Bean
-    public RouteLocator gatewayRoutes(RouteLocatorBuilder builder) {
+    Environment env;
+
+    public FilterConfig(Environment env) {
+        this.env = env;
+    }
+
+    @Bean
+    public RouteLocator gatewayRoutes(RouteLocatorBuilder builder, AuthorizationHeaderFilter myfilter) {
+
         return builder.routes()
                 .route(r -> r.path("/first-service/**")
                             .filters(f -> f.addRequestHeader("first-request", "first-request-header")
-                                           .addResponseHeader("first-response", "first-response-header"))
+                                           .addResponseHeader("first-response", "first-response-header")
+                                           .filter(myfilter.apply(new AuthorizationHeaderFilter.Config())))
                             .uri("http://localhost:8081"))
                 .route(r -> r.path("/second-service/**")
                         .filters(f -> f.addRequestHeader("second-request", "second-request-header")
@@ -18,4 +30,5 @@ public class FilterConfig {
                         .uri("http://localhost:8082"))
                 .build();
     }
+
 }

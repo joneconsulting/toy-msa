@@ -1,18 +1,16 @@
 package com.example.userservice.client;
 
-import com.example.userservice.error.FeignErrorDecoder;
-import com.example.userservice.vo.ResponseOrder;
+import com.example.userservice.error.FeignErrorDecoder2;
+import com.example.userservice.vo.ResponseCatalog;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
-@FeignClient(name="order-service", configuration = FeignErrorDecoder.class)
-public interface OrderServiceClient {
+@FeignClient(name="catalog-service", configuration = FeignErrorDecoder2.class)
+public interface CatalogServiceClient {
 
-//    @GetMapping("/order-service/{userId}/orders_wrong_url")
-    @GetMapping("/order-service/{userId}/orders")
-    List<ResponseOrder> getOrders(@PathVariable String userId);
+    @GetMapping("/catalog-service/getCatalogs_wrong")
+    List<ResponseCatalog> getCatalogs();
 
 }

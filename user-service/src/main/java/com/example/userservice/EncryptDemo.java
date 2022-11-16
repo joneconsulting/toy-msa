@@ -6,11 +6,20 @@ public class EncryptDemo {
     public static void main(String[] args) {
 //        $2a$10$/FK01g0jzGvygjONWyne.O.x0ZM2O7ZCW2PyvTQx4wauDbMYgzVtG
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        System.out.println(passwordEncoder.matches("3333",
-                "$2a$10$/FK01g0jzGvygjONWyne.O.x0ZM2O7ZCW2PyvTQx4wauDbMYgzVtG"));
-        System.out.println(passwordEncoder.matches("3333",
-                "$2a$10$D1SqS6SJuA2KV6v1PqnRGOpR4K4hp7eHcWEAl3uviGnDvXX5PC/n6"));
-        System.out.println(passwordEncoder.matches("22222",
-                "$2a$10$lQ6Hns9I//E/kMrSdTCMs.8ujSw6YOAnAlWaO/cBP2J79Pz5fFAHS"));
+
+        int i = 0;
+        while (i < 5) {
+            String password = "123456";
+            String hashedPassword = passwordEncoder.encode(password);
+            System.out.println(hashedPassword);
+            i++;
+        }
+
+        System.out.println(passwordEncoder.matches("123456",
+                "$2a$10$GHI5DSLoScy6mBu2uFm0PeJkiN0W5fnsknM/ja7EAhxexTqqO4QTq"));
+        System.out.println(passwordEncoder.matches("123456",
+                "$2a$10$pKsi9//8s.w20E4e3p3ZqeyC7kOsZHqrYvDRg0auQb0BxmTqH0yzm"));
+        System.out.println(passwordEncoder.matches("123456",
+                "$2a$10$xu.8LmuYK2WBt2fpUXc3Q.tsiCtEhSDB7essMDXFCcNCOwrHIbBie"));
     }
 }

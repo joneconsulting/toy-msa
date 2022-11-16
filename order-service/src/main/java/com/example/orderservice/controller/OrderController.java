@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/order-service")
@@ -40,8 +41,9 @@ public class OrderController {
 
     @GetMapping("/health_check")
     public String status() {
-        return String.format("It's Working in Order Service on PORT %s",
-                env.getProperty("local.server.port"));
+        return String.format("It's Working in Order Service on LOCAL PORT %s (SERVER PORT %s)",
+                env.getProperty("local.server.port"),
+                env.getProperty("server.port"));
     }
 
     @PostMapping("/{userId}/orders")
@@ -58,8 +60,8 @@ public class OrderController {
         ResponseOrder responseOrder = mapper.map(createdOrder, ResponseOrder.class);
 
         /* kafka */
-//        orderDto.setOrderId(UUID.randomUUID().toString());
-//        orderDto.setTotalPrice(orderDetails.getQty() * orderDetails.getUnitPrice());
+        orderDto.setOrderId(UUID.randomUUID().toString());
+        orderDto.setTotalPrice(orderDetails.getQty() * orderDetails.getUnitPrice());
 
         /* send this order to the kafka */
 //        kafkaProducer.send("example-catalog-topic", orderDto);
@@ -82,7 +84,7 @@ public class OrderController {
         });
 
 //        try {
-//            Thread.sleep(1000);
+//            Thread.sleep(10000);
 //            throw new Exception("장애 발생");
 //        } catch(InterruptedException ex) {
 //            log.warn(ex.getMessage());

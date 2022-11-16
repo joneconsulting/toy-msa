@@ -1,5 +1,5 @@
 server:
-  port: 0
+  port: 10000
 
 spring:
   application:
@@ -25,7 +25,7 @@ spring:
     username: sa
     password:
 #    driver-class-name: org.mariadb.jdbc.Driver
-#    url: jdbc:mariadb://localhost:3306/mydb
+#    url: jdbc:mariadb://localhost:3307/mydb
 #    username: root
 #    password: test1357
 

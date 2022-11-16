@@ -9,11 +9,11 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.server.ResponseStatusException;
 
 @Component
-public class FeignErrorDecoder implements ErrorDecoder {
+public class FeignErrorDecoder2 implements ErrorDecoder {
     Environment env;
 
     @Autowired
-    public FeignErrorDecoder(Environment env) {
+    public FeignErrorDecoder2(Environment env) {
         this.env = env;
     }
 
@@ -23,9 +23,9 @@ public class FeignErrorDecoder implements ErrorDecoder {
             case 400:
                 break;
             case 404:
-                if (methodKey.contains("getOrders")) {
+                if (methodKey.contains("getCatalogs")) {
                     return new ResponseStatusException(HttpStatus.valueOf(response.status()),
-                            env.getProperty("order_service.exception.orders_is_empty"));
+                            "Not catalogs");
                 }
                 break;
             default:

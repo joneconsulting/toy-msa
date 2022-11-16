@@ -5,6 +5,8 @@ import com.example.catalogservice.service.CatalogService;
 import com.example.catalogservice.vo.ResponseCatalog;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +24,9 @@ public class CatalogController {
     CatalogService catalogService;
 
     @Autowired
+    private DiscoveryClient discoveryClient;
+
+    @Autowired
     public CatalogController(Environment env, CatalogService catalogService) {
         this.env = env;
         this.catalogService = catalogService;
@@ -29,8 +34,15 @@ public class CatalogController {
 
     @GetMapping("/health_check")
     public String status() {
-        return String.format("It's Working in Catalog Service on PORT %s",
-                env.getProperty("local.server.port"));
+        List<ServiceInstance> serviceList = getApplications();
+        for (ServiceInstance instance : serviceList) {
+            System.out.println(String.format("instanceId:%s, serviceId:%s, host:%s, scheme:%s, uri:%s",
+                    instance.getInstanceId(), instance.getServiceId(), instance.getHost(), instance.getScheme(), instance.getUri()));
+        }
+
+        return String.format("It's Working in Catalog Service on LOCAL PORT %s (SERVER PORT %s)",
+                env.getProperty("local.server.port"),
+                env.getProperty("server.port"));
     }
 
     @GetMapping("/catalogs")
@@ -43,5 +55,17 @@ public class CatalogController {
         });
 
         return ResponseEntity.status(HttpStatus.OK).body(result);
+    }
+
+    private List<ServiceInstance> getApplications() {
+
+        List<String> services = this.discoveryClient.getServices();
+        List<ServiceInstance> instances = new ArrayList<ServiceInstance>();
+        services.forEach(serviceName -> {
+            this.discoveryClient.getInstances(serviceName).forEach(instance ->{
+                instances.add(instance);
+            });
+        });
+        return instances;
     }
 }
