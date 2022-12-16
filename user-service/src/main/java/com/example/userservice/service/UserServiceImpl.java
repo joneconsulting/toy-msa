@@ -56,14 +56,15 @@ public class UserServiceImpl implements UserService {
                            Environment env,
                            RestTemplate restTemplate,
                            OrderServiceClient orderServiceClient,
-                           CatalogServiceClient catalogServiceClient) {
+                           CatalogServiceClient catalogServiceClient,
+                           CircuitBreakerFactory circuitBreakerFactory) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.env = env;
         this.restTemplate = restTemplate;
         this.orderServiceClient = orderServiceClient;
         this.catalogServiceClient = catalogServiceClient;
-//        this.circuitBreakerFactory = circuitBreakerFactory;
+        this.circuitBreakerFactory = circuitBreakerFactory;
     }
 
     @Override
