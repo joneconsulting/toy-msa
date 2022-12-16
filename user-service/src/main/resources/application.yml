@@ -8,12 +8,12 @@ spring:
 #    import: configserver:http://127.0.0.1:8888
   application:
     name: user-service
-#    zipkin:
-#      base-url: http://127.0.0.1:9411
-#      enabled: true
-#    sleuth:
-#      sampler:
-#        probability: 1.0
+    zipkin:
+      base-url: http://13.124.192.188:9411
+      enabled: true
+    sleuth:
+      sampler:
+        probability: 1.0
   rabbitmq:
     host: 127.0.0.1
     port: 5672
