@@ -6,14 +6,12 @@ import com.example.userservice.dto.UserDto;
 import com.example.userservice.jpa.UserEntity;
 import com.example.userservice.jpa.UserRepository;
 import com.example.userservice.vo.ResponseOrder;
-import feign.FeignException;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.circuitbreaker.CircuitBreakerFactory;
 import org.springframework.core.env.Environment;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -97,7 +95,7 @@ public class UserServiceImpl implements UserService {
         /* @LoadBalanced 로 선언헀으면, apigateway-service로 호출 못함 */
         /* http://ORDER-SERVICE/order-service/1234-45565-34343423432/orders */
 //        String orderUrl = String.format(env.getProperty("order_service.url"), userId);
-//        String orderUrl = String.format("http://127.0.0.1:10000/order-service/%s/orders", userId);
+//        String orderUrl = String.format("http://127.0.0.1:8000/order-service/%s/orders", userId);
 //        ResponseEntity<List<ResponseOrder>> orderListResponse =
 //                restTemplate.exchange(orderUrl, HttpMethod.GET, null,
 //                                            new ParameterizedTypeReference<List<ResponseOrder>>() {
@@ -116,12 +114,13 @@ public class UserServiceImpl implements UserService {
 
         /* Using a feign client */
         /* #2 Feign exception handling */
-        try {
-            ResponseEntity<List<ResponseOrder>> _ordersList = orderServiceClient.getOrders(userId);
-            ordersList = _ordersList.getBody();
-        } catch (FeignException ex) {
-            log.error(ex.getMessage());
-        }
+//        try {
+//            ResponseEntity<List<ResponseOrder>> _ordersList = orderServiceClient.getOrders(userId);
+//            ordersList = _ordersList.getBody();
+        ordersList = orderServiceClient.getOrders(userId);
+//        } catch (FeignException ex) {
+//            log.error(ex.getMessage());
+//        }
 
         /* #3-1 ErrorDecoder */
 //        ordersList = orderServiceClient.getOrders(userId);

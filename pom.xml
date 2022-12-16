@@ -11,6 +11,17 @@
     <groupId>com.example</groupId>
     <artifactId>msa-spring-cloud</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <modules>
+        <module>apigateway-service</module>
+        <module>catalog-service</module>
+        <module>config-service</module>
+        <module>first-service</module>
+        <module>order-service</module>
+        <module>second-service</module>
+        <module>service-discovery</module>
+        <module>user-service</module>
+    </modules>
     <name>msa-spring-cloud</name>
     <description>Demo project for Spring Boot</description>
     <properties>

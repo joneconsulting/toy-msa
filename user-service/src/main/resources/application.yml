@@ -14,11 +14,11 @@ spring:
 #    sleuth:
 #      sampler:
 #        probability: 1.0
-#  rabbitmq:
-#    host: 127.0.0.1
-#    port: 5672
-#    username: guest
-#    password: guest
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
   h2:
     console:
       enabled: true
@@ -58,7 +58,7 @@ management:
 #gateway:
 #  ip: 10.204.136.204
 
-#token:
-#  expiration_time: 86400000
-#  secret: user_token
+token:
+  expiration_time: 86400000
+  secret: user_token
 
