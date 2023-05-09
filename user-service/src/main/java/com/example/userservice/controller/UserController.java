@@ -1,8 +1,8 @@
 package com.example.userservice.controller;
 
-import com.example.userservice.service.UserService;
 import com.example.userservice.dto.UserDto;
 import com.example.userservice.jpa.UserEntity;
+import com.example.userservice.service.UserService;
 import com.example.userservice.vo.Greeting;
 import com.example.userservice.vo.RequestUser;
 import com.example.userservice.vo.ResponseUser;
@@ -41,25 +41,17 @@ public class UserController {
         return String.format("It's Working in User Service"
                 + ", port(local.server.port)=" + env.getProperty("local.server.port")
                 + ", port(server.port)=" + env.getProperty("server.port")
-                + ", gateway ip=" + env.getProperty("gateway.ip")
+                + ", gateway ip(env)=" + env.getProperty("gateway.ip")
+                + ", gateway ip(value)=" + greeting.getIp()
                 + ", message=" + env.getProperty("greeting.message")
-                + ", token secret=" + env.getProperty("token.secret")
+//                + ", token secret=" + env.getProperty("token.secret")
+                + ", token secret=" + greeting.getSecret()
                 + ", token expiration time=" + env.getProperty("token.expiration_time"));
     }
 
     @GetMapping("/welcome")
     @Timed(value="users.welcome", longTask = true)
     public String welcome(HttpServletRequest request, HttpServletResponse response) {
-//        Cookie[] cookies = request.getCookies();
-//        if (cookies != null) {
-//            Arrays.stream(cookies).forEach(cookie -> {
-//                System.out.print(cookie.getName() + "=" + cookie.getValue());
-//            });
-//        }
-//        Cookie c1 = new Cookie("myuser_token", "abcd1234");
-//        response.addCookie(c1);
-
-//        return env.getProperty("greeting.message");
         return greeting.getMessage();
     }
 

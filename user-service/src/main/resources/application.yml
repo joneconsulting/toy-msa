@@ -1,24 +1,26 @@
 server:
-  port: 0
-#  port: ${random.int(50000,50001)}
-#  address: 127.0.0.1
+  port: 60000
 
 spring:
 #  config:
-#    import: configserver:http://127.0.0.1:8888
+#    import: optional:configserver:http://127.0.0.1:8888/
+#  cloud:
+#    config:
+##      name: ecommerce
+#      name: default-user-service
   application:
     name: user-service
-  zipkin:
-    base-url: http://13.124.192.188:9411
-    enabled: true
-  sleuth:
-    sampler:
-      probability: 1.0
-  rabbitmq:
-    host: 127.0.0.1
-    port: 5672
-    username: guest
-    password: guest
+#  zipkin:
+#    base-url: http://13.124.192.188:9411
+#    enabled: true
+#  sleuth:
+#    sampler:
+#      probability: 1.0
+#  rabbitmq:
+#    host: 127.0.0.1
+#    port: 5672
+#    username: guest
+#    password: guest
   h2:
     console:
       enabled: true

@@ -4,24 +4,24 @@ server:
 spring:
   application:
     name: config-service
-  rabbitmq:
-    host: 127.0.0.1
-    port: 5672
-    username: guest
-    password: guest
   profiles:
     active: git
   cloud:
     config:
       server:
         git:
-#          uri: file:///Users/dowonlee_1/Desktop/Work/51.configurations/git-local-repo/dev
           uri: https://github.com/joneconsulting/spring-cloud-config
 #                  basedir: /Users/dowonlee/Desktop/Work/tmp/config-repo
         #          username: [username]
         #          password: [password]
+#          uri: file:///Users/dowonlee_1/Desktop/Work/51.configurations/git-local-repo/dev
 #        native:
 #          search-locations: file:///Users/dowonlee/Desktop/Work/native-file-repo
+#  rabbitmq:
+#    host: 127.0.0.1
+#    port: 5672
+#    username: guest
+#    password: guest
 
 management:
   endpoints:
