@@ -48,4 +48,35 @@ public class UserServiceApplication {
 //    public FeignErrorDecoder getFeignErrorDecoder() {
 //        return new FeignErrorDecoder();
 //    }
+
+//    @Bean
+//    MessageConverter messageConverter() {
+//        return new Jackson2JsonMessageConverter();
+//    }
+//
+//    @Bean
+//    public ConnectionFactory rabbitConnectionFactory() {
+//        CachingConnectionFactory connectionFactory = new CachingConnectionFactory("localhost", 5672);
+//        connectionFactory.setUsername("guest_user");
+//        connectionFactory.setPassword("guest_user");
+//        // .. 이러저런 설정
+//        // publisher confirm ON
+//        connectionFactory.setPublisherConfirms(true);
+//        return connectionFactory;
+//    }
+//
+//    @Bean
+//    RabbitTemplate rabbitTemplate(ConnectionFactory connectionFactory,
+//                                  MessageConverter messageConverter) {
+//        RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory);
+//        rabbitTemplate.setMessageConverter(messageConverter);
+//        rabbitTemplate.setConfirmCallback((correlationData, ack, cause) -> {
+//            if(ack) {
+//                System.out.println("ACK");
+//            } else {
+//                System.out.println("NACK: " + cause);
+//            }
+//        });
+//        return rabbitTemplate;
+//    }
 }

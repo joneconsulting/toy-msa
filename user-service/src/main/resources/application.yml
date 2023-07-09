@@ -2,12 +2,12 @@ server:
   port: 60000
 
 spring:
-#  config:
-#    import: optional:configserver:http://127.0.0.1:8888/
-#  cloud:
-#    config:
-##      name: ecommerce
-#      name: default-user-service
+  config:
+    import: optional:configserver:http://127.0.0.1:8888/
+  cloud:
+    config:
+#      name: ecommerce
+      name: user-service
   application:
     name: user-service
 #  zipkin:
@@ -19,8 +19,11 @@ spring:
 #  rabbitmq:
 #    host: 127.0.0.1
 #    port: 5672
-#    username: guest
-#    password: guest
+#    username: guest_user
+#    password: guest_user
+#    listener:
+#      simple:
+#        prefetch: 5
   h2:
     console:
       enabled: true
@@ -32,7 +35,6 @@ spring:
     url: jdbc:h2:mem:testdb
     username: sa
     password:
-
 eureka:
   instance:
     instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}

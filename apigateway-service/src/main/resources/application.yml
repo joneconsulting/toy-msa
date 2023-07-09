@@ -11,11 +11,14 @@ eureka:
 spring:
   application:
     name: apigateway-service
-#  rabbitmq:
-#    host: 127.0.0.1
-#    port: 5672
-#    username: guest
-#    password: guest
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest_api
+    password: guest_api
+    listener:
+      simple:
+        prefetch: 5
   cloud:
     gateway:
       default-filters:
