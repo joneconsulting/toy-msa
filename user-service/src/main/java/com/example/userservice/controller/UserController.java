@@ -32,6 +32,8 @@ public class UserController {
     private Environment env;
     private UserService userService;
 
+//    private final RabbitTemplate rabbitTemplate;
+
     @Autowired
     private Greeting greeting;
 
@@ -39,9 +41,17 @@ public class UserController {
     public UserController(Environment env, UserService userService) {
         this.env = env;
         this.userService = userService;
+//        this.rabbitTemplate = rabbitTemplate;
     }
 
-    @GetMapping("/health_check")
+//    @PostMapping("/send-message")
+//    public ResponseEntity sendMessage() {
+//        rabbitTemplate.convertAndSend("springCloudBus", "A", "{\"result\":\"OK\"}");
+//
+//        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+//    }
+
+    @GetMapping("/health-check")
     @Timed(value="users.status", longTask = true)
     public String status() {
         return String.format("It's Working in User Service"

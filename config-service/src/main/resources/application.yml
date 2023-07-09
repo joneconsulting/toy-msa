@@ -4,19 +4,19 @@ server:
 spring:
   application:
     name: config-service
-  profiles:
-    active: git
+#  profiles:
+#    active: native
   cloud:
     config:
       server:
-        git:
+        native:
+          search-locations: file:///Users/dowonlee_1/Desktop/git/toy-msa-etc/git-local-repo
+        git: #default
           uri: https://github.com/joneconsulting/spring-cloud-config
-#                  basedir: /Users/dowonlee/Desktop/Work/tmp/config-repo
-        #          username: [username]
-        #          password: [password]
-#          uri: file:///Users/dowonlee_1/Desktop/Work/51.configurations/git-local-repo/dev
-#        native:
-#          search-locations: file:///Users/dowonlee/Desktop/Work/native-file-repo
+          default-label: master
+#              basedir: /Users/dowonlee/Desktop/Work/tmp/config-repo
+#              username: [username]
+#              password: [password]
 #  rabbitmq:
 #    host: 127.0.0.1
 #    port: 5672
