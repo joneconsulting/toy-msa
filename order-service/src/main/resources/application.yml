@@ -4,17 +4,17 @@ server:
 spring:
   application:
     name: order-service
-  rabbitmq:
-    host: 127.0.0.1
-    port: 5672
-    username: guest
-    password: guest
-  zipkin:
-    base-url: http://13.124.192.188:9411
-    enabled: true
-  sleuth:
-    sampler:
-      probability: 1.0
+#  rabbitmq:
+#    host: 127.0.0.1
+#    port: 5672
+#    username: guest
+#    password: guest
+#  zipkin:
+#    base-url: http://13.124.192.188:9411
+#    enabled: true
+#  sleuth:
+#    sampler:
+#      probability: 1.0
   h2:
     console:
       enabled: true
