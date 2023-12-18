@@ -1,0 +1,20 @@
+server:
+  port: 8088
+
+#logging:
+#  level:
+#    org.springframework: debug
+
+spring:
+  application:
+    name: my-swagger-demo
+#  mvc:
+#    pathmatch:
+#      matching-strategy: ant_path_matcher
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
