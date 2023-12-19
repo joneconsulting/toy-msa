@@ -21,6 +21,7 @@
         <module>second-service</module>
         <module>service-discovery</module>
         <module>user-service</module>
+        <module>swagger-demo</module>
     </modules>
     <name>msa-spring-cloud</name>
     <description>Demo project for Spring Boot</description>
