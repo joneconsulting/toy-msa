@@ -3,7 +3,7 @@ package com.example.orderservice.jpa;
 import lombok.Data;
 import org.hibernate.annotations.ColumnDefault;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 

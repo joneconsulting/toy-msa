@@ -46,8 +46,13 @@ eureka:
 logging:
   level:
     com.example.orderservice: DEBUG
+  pattern:
+    level: '%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]'
 
 management:
+  tracing:
+    sampling:
+      probability: 0.1
   endpoints:
     web:
       exposure:

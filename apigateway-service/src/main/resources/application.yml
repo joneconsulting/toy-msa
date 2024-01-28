@@ -9,6 +9,10 @@ eureka:
       defaultZone: http://localhost:8761/eureka
 
 spring:
+  config:
+    activate:
+      on-profile: default
+
   application:
     name: apigateway-service
 #  rabbitmq:
@@ -16,9 +20,9 @@ spring:
 #    port: 5672
 #    username: guest_api
 #    password: guest_api
-    listener:
-      simple:
-        prefetch: 5
+#    listener:
+#      simple:
+#        prefetch: 5
   cloud:
     gateway:
       default-filters:
@@ -106,4 +110,4 @@ management:
   endpoints:
     web:
       exposure:
-        include: refresh, health, beans, httptrace, busrefresh, info, metrics, prometheus
+        include: refresh, health, beans, httpexchanges, busrefresh, info, metrics, prometheus
