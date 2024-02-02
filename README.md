@@ -20,8 +20,8 @@
 > * catalog-service: 버전 변경
 >   * javax 패키지 jakarta 패키지로 변경
 > * order-service: 버전 변경
-    >   * javax 패키지 jakarta 패키지로 변경
-    >   * sleuth를 micrometer로 변경
+>   * javax 패키지 jakarta 패키지로 변경
+>   * sleuth를 micrometer로 변경
 > * user-service: 버전 변경 중 (not finished)
 >   * Spring Security 부분 수정 (6.2.1)
 >   * WebSecurityNew 클래스 추가 (기존 WebSecurity 클래스 삭제)
