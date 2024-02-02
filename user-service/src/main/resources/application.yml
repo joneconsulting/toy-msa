@@ -61,7 +61,13 @@ logging:
 management:
   tracing:
     sampling:
-      probability: 0.1
+      probability: 1.0
+    propagation:
+      consume: B3
+      produce: B3_MULTI
+  zipkin:
+    tracing:
+      endpoint: "http://localhost:9411/api/v2/spans"
   endpoints:
     web:
       exposure:
