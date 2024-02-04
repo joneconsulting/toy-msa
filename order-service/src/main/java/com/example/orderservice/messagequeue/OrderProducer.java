@@ -11,7 +11,7 @@ import java.util.List;
 
 //import org.springframework.kafka.core.KafkaTemplate;
 
-@Service
+//@Service
 @Slf4j
 public class OrderProducer {
 //    private KafkaTemplate<String, String> kafkaTemplate;

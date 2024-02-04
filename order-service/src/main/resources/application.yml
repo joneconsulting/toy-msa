@@ -4,17 +4,14 @@ server:
 spring:
   application:
     name: order-service
-  rabbitmq:
-    host: 127.0.0.1
-    port: 5672
-    username: guest
-    password: guest
-  zipkin:
-    base-url: http://127.0.0.1:9411
-    enabled: true
-#  sleuth:
-#    sampler:
-#      probability: 1.0
+#  rabbitmq:
+#    host: 127.0.0.1
+#    port: 5672
+#    username: guest
+#    password: guest
+#  zipkin:
+#    base-url: http://127.0.0.1:9411
+#    enabled: true
   h2:
     console:
       enabled: true
@@ -50,15 +47,15 @@ logging:
     level: '%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]'
 
 management:
-  tracing:
-    sampling:
-      probability: 1.0
-    propagation:
-      consume: B3
-      produce: B3_MULTI
-  zipkin:
-    tracing:
-      endpoint: "http://localhost:9411/api/v2/spans"
+#  tracing:
+#    sampling:
+#      probability: 1.0
+#    propagation:
+#      consume: B3
+#      produce: B3_MULTI
+#  zipkin:
+#    tracing:
+#      endpoint: "http://localhost:9411/api/v2/spans"
   endpoints:
     web:
       exposure:
