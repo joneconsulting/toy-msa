@@ -2,8 +2,8 @@ server:
   port: 60000
 
 spring:
-  config:
-    import: optional:configserver:http://127.0.0.1:8888/
+#  config:
+#    import: optional:configserver:http://127.0.0.1:8888/
   cloud:
     config:
 #      name: ecommerce
@@ -16,14 +16,14 @@ spring:
 #  sleuth:
 #    sampler:
 #      probability: 1.0
-#  rabbitmq:
-#    host: 127.0.0.1
-#    port: 5672
-#    username: guest_user
-#    password: guest_user
-#    listener:
-#      simple:
-#        prefetch: 5
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+    listener:
+      simple:
+        prefetch: 5
   h2:
     console:
       enabled: true
@@ -76,7 +76,7 @@ management:
 #gateway:
 #  ip: 10.204.136.204
 
-token:
-  expiration_time: 86400000
-  secret: user_token
+#token:
+#  expiration_time: 86400000
+#  secret: user_token
 
