@@ -2,11 +2,10 @@ server:
   port: 60000
 
 spring:
-  config:
-    import: optional:configserver:http://127.0.0.1:8888/
+#  config:
+#    import: optional:configserver:http://127.0.0.1:8888/
   cloud:
     config:
-#      name: ecommerce
       name: user-service
   application:
     name: user-service
@@ -19,8 +18,8 @@ spring:
 #  rabbitmq:
 #    host: 127.0.0.1
 #    port: 5672
-#    username: guest_user
-#    password: guest_user
+#    username: guest
+#    password: guest
 #    listener:
 #      simple:
 #        prefetch: 5
@@ -76,7 +75,7 @@ management:
 #gateway:
 #  ip: 10.204.136.204
 
-token:
-  expiration_time: 86400000
-  secret: user_token
+#token:
+#  expiration_time: 86400000
+#  secret: user_token
 
