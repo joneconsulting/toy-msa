@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 //import org.springframework.kafka.core.KafkaTemplate;
 
-//@Service
+@Service
 @Slf4j
 public class KafkaProducer {
 //    private KafkaTemplate<String, String> kafkaTemplate;
