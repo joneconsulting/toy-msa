@@ -148,10 +148,10 @@
             <artifactId>zipkin-reporter-brave</artifactId>
         </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>io.github.openfeign</groupId>-->
-<!--            <artifactId>feign-micrometer</artifactId>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>io.github.openfeign</groupId>
+            <artifactId>feign-micrometer</artifactId>
+        </dependency>
 
 <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-openfeign -->
         <dependency>
