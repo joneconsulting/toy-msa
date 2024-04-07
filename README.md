@@ -25,4 +25,5 @@
 > * user-service: 버전 변경
 >   * Spring Security 부분 수정 (6.2.1)
 >   * WebSecurityNew 클래스 추가 (기존 WebSecurity 클래스 삭제)
+>      * .requestMatchers("/**").access(new WebExpressionAuthorizationManager("hasIpAddress('127.0.0.1') or hasIpAddress('172.30.1.48')")) --> 172.30.1.48 대신 사용하시는 IP Address로 변경 
 >   * AuthenticationFilterNew 클래스 추가 (기존 AuthenticationFilter 클래스 삭제)
