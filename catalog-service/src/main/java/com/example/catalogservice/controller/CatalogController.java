@@ -7,6 +7,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
+import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,7 +33,7 @@ public class CatalogController {
         this.catalogService = catalogService;
     }
 
-    @GetMapping("/health_check")
+    @GetMapping("/health-check")
     public String status() {
         List<ServiceInstance> serviceList = getApplications();
         for (ServiceInstance instance : serviceList) {

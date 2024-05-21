@@ -17,6 +17,10 @@ spring:
     generate-ddl: true
     database: h2
     defer-datasource-initialization: true
+#  sql:
+#    init:
+#      mode: always
+
   datasource:
     driver-class-name: org.h2.Driver
     url: jdbc:h2:mem:testdb
