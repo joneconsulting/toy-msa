@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: catalog-service
-          image: edowon0623/catalog-service:k8s_v1.4
+          image: edowon0623/catalog-service:k8s_v1.6
           imagePullPolicy: Always
           ports:
             - containerPort: 8080

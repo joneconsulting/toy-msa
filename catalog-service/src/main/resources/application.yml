@@ -1,9 +1,17 @@
 server:
   port: 8080
 
+topic:
+  nmame: my-catalog-topic
+
 spring:
   application:
     name: catalog-service
+  kafka:
+    consumer:
+      bootstrap-servers: 172.30.1.1:9092 # Kafka 클러스에 대한 초기 연결에 사용할 호스트 : 포트 목록
+      group-id: consumer_group01 # Group Id
+      auto-offset-reset: earliest
   h2:
     console:
       enabled: true
