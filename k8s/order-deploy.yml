@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: order-service
-          image: edowon0623/order-service:k8s_v1.1
+          image: edowon0623/order-service:k8s_v1.2
           imagePullPolicy: Always
           ports:
             - containerPort: 10000
