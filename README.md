@@ -29,3 +29,18 @@
 >   * Spring Security 부분 수정 (6.2.1)
 >   * WebSecurityNew 클래스 추가 (기존 WebSecurity 클래스 삭제)
 >   * AuthenticationFilterNew 클래스 추가 (기존 AuthenticationFilter 클래스 삭제)
+
+### 2024-05-20
+* Spring Boot 3.2.2 + Kubernetes 배포 (spring3.2_k8s 브랜치) 
+* user-service, order-service, catalog-service를 Kubernetes에 배포하는 예제를 추가하였습니다. 
+* docker-compose.yml 파일을 이용하여 docker kafka를 기동하시기 바랍니다. 
+  * docker-compose.yml 파일에서 'KAFKA_ADVERTISED_LISTENERS' 설정에서 사용하시는 IP로 변경하시기 바랍니다. 
+* user-service 실행 
+  * kubectl apply -f ./k8s/user-deploy.yml
+  * PORT: 60000, NodePort: 32000 사용
+* order-service 실행
+  * kubectl apply -f ./k8s/order-deploy.yml
+  * PORT: 10000, NodePort: 31000 사용
+* catalog-service 실행
+  * kubectl apply -f ./k8s/catalog-deploy.yml
+  * PORT: 8080, NodePort: Random 사용
