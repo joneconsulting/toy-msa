@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: catalog-deploy
+spec:
+  selector:
+    matchLabels:
+      app: catalog-app
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: catalog-app
+    spec:
+      containers:
+        - name: catalog-service
+          image: edowon0623/catalog-service:k8s_v1.2
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          resources:
+            requests:
+              cpu: 500m
+              memory: 1000Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: catalog-service
+spec:
+  type: NodePort
+  selector:
+    app: catalog-app
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080

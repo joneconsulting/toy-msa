@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: order-deploy
+spec:
+  selector:
+    matchLabels:
+      app: order-app
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: order-app
+    spec:
+      containers:
+        - name: order-service
+          image: edowon0623/order-service:k8s_v1.0
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 10000
+              protocol: TCP
+          resources:
+            requests:
+              cpu: 500m
+              memory: 1000Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: order-service
+spec:
+  type: NodePort
+  selector:
+    app: order-app
+  ports:
+    - protocol: TCP
+      port: 10000
+      targetPort: 10000
+      nodePort: 31000

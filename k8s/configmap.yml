@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: msa-k8s-configmap
+data:
+  gateway_ip: '172.30.90.108'
+  token_expiration_time: '86400000'
+  token_secret: 'APPLE_YOUR_SECRETKEY_20240522_FOR_SPRING_CLOUD_LOGIN_#1'
+  order-service-url: http://order-service:10000
