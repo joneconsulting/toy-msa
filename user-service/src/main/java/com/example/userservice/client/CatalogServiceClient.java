@@ -1,6 +1,6 @@
 package com.example.userservice.client;
 
-import com.example.userservice.error.FeignErrorDecoder2;
+import com.example.userservice.jpa.error.FeignErrorDecoder2;
 import com.example.userservice.vo.ResponseCatalog;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;

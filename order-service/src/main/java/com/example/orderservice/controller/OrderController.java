@@ -65,7 +65,7 @@ public class OrderController {
         orderDto.setTotalPrice(orderDetails.getQty() * orderDetails.getUnitPrice());
 
         /* send this order to the kafka */
-//        kafkaProducer.send("example-catalog-topic", orderDto);
+        kafkaProducer.send("example-catalog-topic", orderDto);
 
 //        orderProducer.send("orders", orderDto);
 //        ResponseOrder responseOrder = mapper.map(orderDto, ResponseOrder.class);
@@ -84,16 +84,16 @@ public class OrderController {
             result.add(new ModelMapper().map(v, ResponseOrder.class));
         });
 
-        try {
-            Random rnd = new Random();
-            int value = rnd.nextInt(5);
-            if (value % 2 == 0) {
-                Thread.sleep(10000);
-                throw new Exception("장애 발생");
-            }
-        } catch(InterruptedException ex) {
-            log.warn(ex.getMessage());
-        }
+//        try {
+//            Random rnd = new Random();
+//            int value = rnd.nextInt(5);
+//            if (value % 2 == 0) {
+//                Thread.sleep(10000);
+//                throw new Exception("장애 발생");
+//            }
+//        } catch(InterruptedException ex) {
+//            log.warn(ex.getMessage());
+//        }
 
         log.info("Add retrieved orders data");
 

@@ -13,13 +13,8 @@
     <version>1.0</version>
     <packaging>pom</packaging>
     <modules>
-        <module>apigateway-service</module>
         <module>catalog-service</module>
-        <module>config-service</module>
-        <module>first-service</module>
         <module>order-service</module>
-        <module>second-service</module>
-        <module>service-discovery</module>
         <module>user-service</module>
     </modules>
     <name>msa-spring-cloud</name>
