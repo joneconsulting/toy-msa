@@ -1,0 +1,14 @@
+server:
+  poer: 8080
+
+spring:
+  application:
+    name: base-service
+
+eureka:
+  client:
+    register-with-eurkea: true
+    fetch-registry: true
+    service-url:
+#      defaultZone: http://localhost:8761/eureka
+      defaultZone: http://localhost:8762/eureka, http://DOWONui-MacBookPro.local:8763/eureka
