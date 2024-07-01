@@ -34,10 +34,6 @@ public class GlobalFilter extends AbstractGatewayFilterFactory<GlobalFilter.Conf
         });
     }
 
-//    public abstract Mono<Void> filter(
-//            ServerWebExchange exchange,
-//            GatewayFilterChain chain);
-
     @Data
     public static class Config {
         private String baseMessage;

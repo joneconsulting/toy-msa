@@ -12,7 +12,6 @@ spring:
   config:
     activate:
       on-profile: default
-
   application:
     name: apigateway-service
   rabbitmq:
@@ -86,22 +85,22 @@ spring:
           predicates:
             - Path=/first-service/**
           filters:
-#            - AddRequestHeader=first-request, first-request-header2
-#            - AddResponseHeader=first-response, first-response-header2
+            - AddRequestHeader=first-request, first-request-header-by-yaml
+            - AddResponseHeader=first-response, first-response-header-from-yaml
             - CustomFilter
         - id: second-service
           uri: lb://MY-SECOND-SERVICE
           predicates:
             - Path=/second-service/**
           filters:
-#            - AddRequestHeader=second-request, second-request-header2
-#            - AddResponseHeader=second-response, second-response-header2
+            - AddRequestHeader=second-request, second-request-header-by-yaml
+            - AddResponseHeader=second-response, second-response-header-from-yaml
             - name: CustomFilter
-#            - name: LoggingFilter
-#              args:
-#                baseMessage: Hi, there.
-#                preLogger: true
-#                postLogger: true
+            - name: LoggingFilter
+              args:
+                baseMessage: Hi, there.
+                preLogger: true
+                postLogger: true
 
 token:
   secret: user_token
