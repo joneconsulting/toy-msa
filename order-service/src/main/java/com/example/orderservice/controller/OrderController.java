@@ -40,7 +40,7 @@ public class OrderController {
         this.orderProducer = orderProducer;
     }
 
-    @GetMapping("/health_check")
+    @GetMapping("/health-check")
     public String status() {
         return String.format("It's Working in Order Service on LOCAL PORT %s (SERVER PORT %s)",
                 env.getProperty("local.server.port"),
@@ -67,9 +67,6 @@ public class OrderController {
         /* send this order to the kafka */
         kafkaProducer.send("example-catalog-topic", orderDto);
 
-//        orderProducer.send("orders", orderDto);
-//        ResponseOrder responseOrder = mapper.map(orderDto, ResponseOrder.class);
-
         log.info("After added orders data");
         return ResponseEntity.status(HttpStatus.CREATED).body(responseOrder);
     }
@@ -84,16 +81,16 @@ public class OrderController {
             result.add(new ModelMapper().map(v, ResponseOrder.class));
         });
 
-        try {
-            Random rnd = new Random();
-            int value = rnd.nextInt(5);
-            if (value % 2 == 0) {
-                Thread.sleep(10000);
-                throw new Exception("장애 발생");
-            }
-        } catch(InterruptedException ex) {
-            log.warn(ex.getMessage());
-        }
+//        try {
+//            Random rnd = new Random();
+//            int value = rnd.nextInt(5);
+//            if (value % 2 == 0) {
+//                Thread.sleep(10000);
+//                throw new Exception("장애 발생");
+//            }
+//        } catch(InterruptedException ex) {
+//            log.warn(ex.getMessage());
+//        }
 
         log.info("Add retrieved orders data");
 
