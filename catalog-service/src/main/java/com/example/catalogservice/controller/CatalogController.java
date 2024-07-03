@@ -32,7 +32,7 @@ public class CatalogController {
         this.catalogService = catalogService;
     }
 
-    @GetMapping("/health_check")
+    @GetMapping("/health-check")
     public String status() {
         List<ServiceInstance> serviceList = getApplications();
         for (ServiceInstance instance : serviceList) {
