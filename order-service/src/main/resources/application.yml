@@ -9,7 +9,7 @@ spring:
     name: order-service
   kafka:
     producer:
-      bootstrap-servers: 172.30.1.1:9092
+      bootstrap-servers: 192.168.206.19:9092
   h2:
     console:
       enabled: true
