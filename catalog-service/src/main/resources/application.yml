@@ -2,14 +2,14 @@ server:
   port: 8080
 
 topic:
-  nmame: my-catalog-topic
+  name: my-catalog-topic
 
 spring:
   application:
     name: catalog-service
   kafka:
     consumer:
-      bootstrap-servers: 192.168.206.19:9092 # Kafka 클러스에 대한 초기 연결에 사용할 호스트 : 포트 목록
+      bootstrap-servers: ${BOOTSTRAP-SERVERS} # Kafka 클러스에 대한 초기 연결에 사용할 호스트 : 포트 목록
       group-id: consumer_group01 # Group Id
       auto-offset-reset: earliest
   h2:
@@ -35,3 +35,5 @@ spring:
 logging:
   level:
     com.example.catalogservice: DEBUG
+  pattern:
+    correlation: '%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]'

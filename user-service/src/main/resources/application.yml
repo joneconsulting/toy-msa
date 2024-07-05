@@ -31,9 +31,9 @@ greeting:
 
 logging:
   level:
-    com.example.userservice.client: DEBUG
+    com.example.userservice: DEBUG
   pattern:
-    level: '%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]'
+    correlation: '%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]'
 
 management:
   endpoints:

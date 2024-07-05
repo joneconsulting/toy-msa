@@ -32,8 +32,6 @@ public class UserController {
     private Environment env;
     private UserService userService;
 
-//    private final RabbitTemplate rabbitTemplate;
-
     @Autowired
     private Greeting greeting;
 
@@ -41,15 +39,7 @@ public class UserController {
     public UserController(Environment env, UserService userService) {
         this.env = env;
         this.userService = userService;
-//        this.rabbitTemplate = rabbitTemplate;
     }
-
-//    @PostMapping("/send-message")
-//    public ResponseEntity sendMessage() {
-//        rabbitTemplate.convertAndSend("springCloudBus", "A", "{\"result\":\"OK\"}");
-//
-//        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
-//    }
 
     @GetMapping("/health-check")
     @Timed(value="users.status", longTask = true)
@@ -60,7 +50,6 @@ public class UserController {
                 + ", gateway ip(env)=" + env.getProperty("gateway.ip")
                 + ", gateway ip(value)=" + greeting.getIp()
                 + ", message=" + env.getProperty("greeting.message")
-//                + ", token secret=" + env.getProperty("token.secret")
                 + ", token secret=" + greeting.getSecret()
                 + ", token expiration time=" + env.getProperty("token.expiration_time"));
     }
@@ -68,6 +57,10 @@ public class UserController {
     @GetMapping("/welcome")
     @Timed(value="users.welcome", longTask = true)
     public String welcome(HttpServletRequest request, HttpServletResponse response) {
+        System.out.println("users.welcome ip:" + request.getRemoteAddr() +
+                "," + request.getRemoteHost() +
+                "," + request.getRequestURI() +
+                "," + request.getRequestURL());
         return greeting.getMessage();
     }
 

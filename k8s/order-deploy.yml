@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: order-service
-          image: edowon0623/order-service:k8s_v1.6_nokafka
+          image: edowon0623/order-service:k8s_v1.1
           imagePullPolicy: Always
           ports:
             - containerPort: 10000
@@ -23,6 +23,12 @@ spec:
             requests:
               cpu: 500m
               memory: 1000Mi
+          env:
+            - name: BOOTSTRAP-SERVERS
+              valueFrom:
+                configMapKeyRef:
+                  name: msa-k8s-configmap
+                  key: bootstrap-servers
 ---
 apiVersion: v1
 kind: Service
@@ -36,4 +42,4 @@ spec:
     - protocol: TCP
       port: 10000
       targetPort: 10000
-      nodePort: 31000
+      nodePort: 30002

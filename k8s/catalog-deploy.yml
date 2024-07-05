@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: catalog-service
-          image: edowon0623/catalog-service:k8s_v1.7
+          image: edowon0623/catalog-service:k8s_v1.0
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
@@ -23,6 +23,12 @@ spec:
             requests:
               cpu: 500m
               memory: 1000Mi
+          env:
+            - name: BOOTSTRAP-SERVERS
+              valueFrom:
+                configMapKeyRef:
+                  name: msa-k8s-configmap
+                  key: bootstrap-servers
 ---
 apiVersion: v1
 kind: Service
@@ -36,3 +42,4 @@ spec:
     - protocol: TCP
       port: 8080
       targetPort: 8080
+      nodePort: 30003

@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: user-service
-          image: edowon0623/user-service:k8s_v1.10
+          image: edowon0623/user-service:k8s_v1.5
           imagePullPolicy: Always
           ports:
             - containerPort: 60000
@@ -57,4 +57,4 @@ spec:
     - protocol: TCP
       port: 60000
       targetPort: 60000
-      nodePort: 32000
+      nodePort: 30001
