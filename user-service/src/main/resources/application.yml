@@ -9,12 +9,10 @@ spring:
       name: user-service
   application:
     name: user-service
-#  zipkin:
-#    base-url: http://13.124.192.188:9411
-#    enabled: true
-#  sleuth:
-#    sampler:
-#      probability: 1.0
+  zipkin:
+    base-url: http://localhost:9411
+    enabled: true
+
 #  rabbitmq:
 #    host: 127.0.0.1
 #    port: 5672
@@ -55,7 +53,7 @@ logging:
   level:
     com.example.userservice.client: DEBUG
   pattern:
-    level: '%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]'
+    correlation: '%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]'
 
 management:
   tracing:
@@ -63,14 +61,15 @@ management:
       probability: 1.0
     propagation:
       consume: B3
-      produce: B3_MULTI
+      produce: B3
   zipkin:
     tracing:
-      endpoint: "http://localhost:9411/api/v2/spans"
+      endpoint: http://localhost:9411/api/v2/spans
+
   endpoints:
     web:
       exposure:
-        include: refresh, health, beans, busrefresh, info, metrics, prometheus
+        include: "*"
 
 #gateway:
 #  ip: 10.204.136.204
