@@ -59,6 +59,9 @@ public class WebSecurityNew {
                         .requestMatchers(new AntPathRequestMatcher("/users", "POST")).permitAll()
                         .requestMatchers(new AntPathRequestMatcher("/welcome")).permitAll()
                         .requestMatchers(new AntPathRequestMatcher("/health-check")).permitAll()
+                        .requestMatchers(new AntPathRequestMatcher("/swagger-ui/**")).permitAll()
+                        .requestMatchers(new AntPathRequestMatcher("/swagger-resources/**")).permitAll()
+                        .requestMatchers(new AntPathRequestMatcher("/v3/api-docs/**")).permitAll()
 //                        .requestMatchers("/**").access(this::hasIpAddress)
                         .requestMatchers("/**").access(
                                 new WebExpressionAuthorizationManager("hasIpAddress('127.0.0.1') or hasIpAddress('192.168.0.33')")) // host pc ip address
