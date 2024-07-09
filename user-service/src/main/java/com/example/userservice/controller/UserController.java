@@ -71,9 +71,9 @@ public class UserController {
         return greeting.getMessage();
     }
 
-    @Operation(summary = "전체 사용자 목록조회 API", description = "현재 회원 가입 된 전체 사용자 목록을 조회하기 위한 API")
+    @Operation(summary = "사용자 회원 가입을 위한 API", description = "user-service에 회원 가입을 위한 API")
     @ApiResponses({
-            @ApiResponse(responseCode = "200", description = "OK"),
+            @ApiResponse(responseCode = "201", description = "CREATED"),
             @ApiResponse(responseCode = "400", description = "BAD REQUEST"),
             @ApiResponse(responseCode = "500", description = "INTERNAL SERVER ERROR"),
     }
@@ -116,7 +116,7 @@ public class UserController {
             @ApiResponse(responseCode = "200", description = "OK"),
             @ApiResponse(responseCode = "401", description = "Unauthorized (인증 실패 오류)"),
             @ApiResponse(responseCode = "403", description = "Forbidden (권한이 없는 페이지에 엑세스)"),
-            @ApiResponse(responseCode = "404", description = "Forbidden (권한이 없는 페이지에 엑세스)"),
+            @ApiResponse(responseCode = "404", description = "NOT FOUND (회원 정보가 없을 겨우)"),
             @ApiResponse(responseCode = "500", description = "INTERNAL SERVER ERROR"),
     }
     )
