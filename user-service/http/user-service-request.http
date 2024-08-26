@@ -1,0 +1,31 @@
+### Add user
+POST {{gateway-api}}/user-service/users
+Content-Type: application/json
+
+{
+  "name": "Dowon Lee",
+  "email": "edowon0623@gmail.com",
+  "pwd": "12345678"
+}
+
+### Login user
+POST {{gateway-api}}/user-service/login
+Content-Type: application/json
+
+{
+  "email": "edowon0623@gmail.com",
+  "password": "12345678"
+}
+> {%
+    client.global.set("auth_token", response.headers.valueOf("token"));
+    client.log(client.global.get("auth_token"));
+%}
+
+### Retrieve all users
+GET {{gateway-api}}/user-service/users
+Authorization: Bearer {{auth_token}}
+
+### Retrieve one user detail
+GET {{gateway-api}}/user-service/users/{{user-id}}
+Authorization: Bearer {{auth_token}}
+###
