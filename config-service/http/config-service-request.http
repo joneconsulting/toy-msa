@@ -1,0 +1,14 @@
+### Encryption
+POST {{base-url}}:8888/encrypt
+Content-Type: text/plain
+
+YOUR_SECRETKEY_20240828_FOR_SPRING_CLOUD_LOGIN
+
+### Decryption
+POST {{base-url}}:8888/decrypt
+Content-Type: text/plain
+
+AQBc2gzIET++nplSofhKaUK1lYDKYvYeSMkqkQZvtda4DAfzx1GeAPmgkZW2KQG/Ay43OZDLr1cuNdLb+EcRYNLGUEO7tsIU8Tq/gaEyoC9EHQCEndTVdEFf/Hc8lPnX4mXjAPokh9HVZiThcYfKev8mxsnBG1cuzwejV0qLZAWrD2WW51/56GwDDo27Xwo3XTx7zhkM1NUftradjls/oMGe1HhLc6O3wj6xuqep6D3UG5KcAmeZ1E4oJ52aR0cRQqw7V6RHuIeybaAUx/Qz5EKWTtQf2NejALtUvkjdE7Jd5tdHoCCsKmwvkVWgCUyzojvimnegO+fcIzj+Rb97JrgtoAUABc57aAOQNyInOT51V2x9ssg01UToBxHQ18XDtL19C6zoFEV5pefKgxN2HAVyFvwfuFvtoWeaSxAhMrEPKw==
+
+###
+

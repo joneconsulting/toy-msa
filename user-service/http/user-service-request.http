@@ -1,19 +1,19 @@
 ### Add user
-POST {{gateway-api}}/user-service/users
+POST {{base-url}}:8000/user-service/users
 Content-Type: application/json
 
 {
   "name": "Dowon Lee",
-  "email": "edowon0623@gmail.com",
+  "email": "edowon0623@naver.com",
   "pwd": "12345678"
 }
 
 ### Login user
-POST {{gateway-api}}/user-service/login
+POST {{base-url}}:8000/user-service/login
 Content-Type: application/json
 
 {
-  "email": "edowon0623@gmail.com",
+  "email": "edowon0623@naver.com",
   "password": "12345678"
 }
 > {%
@@ -22,10 +22,25 @@ Content-Type: application/json
 %}
 
 ### Retrieve all users
-GET {{gateway-api}}/user-service/users
+GET {{base-url}}:8000/user-service/users
 Authorization: Bearer {{auth_token}}
 
 ### Retrieve one user detail
-GET {{gateway-api}}/user-service/users/{{user-id}}
+GET {{base-url}}:8000/user-service/users/{{user-id}}
 Authorization: Bearer {{auth_token}}
-###
+
+### Retrieve all categories
+GET {{base-url}}:8000/catalog-service/catalogs
+
+### Add iteam
+POST {{base-url}}:8000/order-service/{{user-id}}/orders
+Content-Type: application/json
+
+{
+  "productId": "CATALOG-003",
+  "qty": 10,
+  "unitPrice": 1200
+}
+
+### Retrieve order items
+GET {{base-url}}:8000/order-service/{{user-id}}/orders

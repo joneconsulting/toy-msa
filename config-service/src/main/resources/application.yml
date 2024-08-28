@@ -14,8 +14,8 @@ spring:
         git: #default
           uri: https://github.com/joneconsulting/spring-cloud-config
           default-label: master
-          username: <github-id>
-          password: <gihub-accessToken>
+#          username: <github-id>
+#          password: <gihub-accessToken>
         bootstrap: true
 #  rabbitmq:
 #    host: 127.0.0.1
