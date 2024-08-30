@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: user-service
-          image: edowon0623/user-service:k8s_v1.5
+          image: edowon0623/user-service:ssg_v1.1
           imagePullPolicy: Always
           ports:
             - containerPort: 60000

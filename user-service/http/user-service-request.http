@@ -1,0 +1,46 @@
+### Add user
+POST {{base-url}}:30001/users
+Content-Type: application/json
+
+{
+  "name": "Dowon Lee",
+  "email": "edowon0623@naver.com",
+  "pwd": "12345678"
+}
+
+### Login user
+POST {{base-url}}:30001/login
+Content-Type: application/json
+
+{
+  "email": "edowon0623@naver.com",
+  "password": "12345678"
+}
+> {%
+    client.global.set("auth_token", response.headers.valueOf("token"));
+    client.log(client.global.get("auth_token"));
+%}
+
+### Retrieve all users
+GET {{base-url}}:30001/users
+Authorization: Bearer {{auth_token}}
+
+### Retrieve one user detail
+GET {{base-url}}:30001/users/{{user-id}}
+Authorization: Bearer {{auth_token}}
+
+### Retrieve all categories
+GET {{base-url}}:30003/catalogs
+
+### Add iteam
+POST {{base-url}}:30002/{{user-id}}/orders
+Content-Type: application/json
+
+{
+  "productId": "CATALOG-003",
+  "qty": 10,
+  "unitPrice": 1200
+}
+
+### Retrieve order items
+GET {{base-url}}:30002/{{user-id}}/orders

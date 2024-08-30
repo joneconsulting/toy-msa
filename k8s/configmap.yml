@@ -3,8 +3,8 @@ kind: ConfigMap
 metadata:
   name: msa-k8s-configmap
 data:
-  gateway_ip: "192.168.65.3"
+  gateway_ip: "172.30.1.58"
   token_expiration_time: "86400000"
   token_secret: "APPLE_YOUR_SECRETKEY_20240522_FOR_SPRING_CLOUD_LOGIN_#1"
   order-service-url: "http://order-service:10000"
-  bootstrap-servers: "192.168.65.3:9092"
+  bootstrap-servers: "172.30.1.58:9092"
