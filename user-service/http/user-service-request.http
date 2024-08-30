@@ -32,8 +32,8 @@ Authorization: Bearer {{auth_token}}
 ### Retrieve all categories
 GET {{base-url}}:30003/catalogs
 
-### Add iteam
-POST {{base-url}}:30002/{{user-id}}/orders
+### Add item
+POST {{base-url}}:30002/order-service/{{user-id}}/orders
 Content-Type: application/json
 
 {
@@ -43,4 +43,4 @@ Content-Type: application/json
 }
 
 ### Retrieve order items
-GET {{base-url}}:30002/{{user-id}}/orders
+GET {{base-url}}:30002/order-service/{{user-id}}/orders
