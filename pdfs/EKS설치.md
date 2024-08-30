@@ -1,13 +1,22 @@
 ## AWSCLI 설치 준비
 $ aws --version
+
 $ kubectl
+
 $ curl -O https://s3.us-west-2.amazonaws.com/amazon-eks/1.29.6/2024-07-12/bin/linux/amd64/kubectl
+
 $ chmod +x ./kubectl
+
 $ mkdir -p $HOME/bin && cp ./kubectl $HOME/bin/kubectl && export PATH=$HOME/bin:$PATH
+
 $ echo 'export PATH=$HOME/bin:$PATH' >> ~/.bashrc
+
 $ kubectl version --client
+
 $ aws sts get-caller-identity
+
 $ aws configure
+
 $ aws sts get-caller-identity
 
 ## EKS 클러스터 설치
