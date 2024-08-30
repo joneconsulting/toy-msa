@@ -30,7 +30,7 @@ GET {{base-url}}:30001/users/{{user-id}}
 Authorization: Bearer {{auth_token}}
 
 ### Retrieve all categories
-GET {{base-url}}:30003/catalogs
+GET {{base-url}}:30003/catalog-service/catalogs
 
 ### Add item
 POST {{base-url}}:30002/order-service/{{user-id}}/orders
