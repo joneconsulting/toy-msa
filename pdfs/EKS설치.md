@@ -21,8 +21,11 @@ $ aws sts get-caller-identity
 
 ## EKS 클러스터 설치
 $ curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tm
+
 $ sudo mv /tmp/eksctl /usr/local/bin
+
 $ eksctl version
+
 $ eksctl create cluster --name my-cluster --region ap-northeast-2 --fargate
 
 ## EKS 설정 업데이트
@@ -36,6 +39,10 @@ $ vi ~/.kube/config -> v1alpha1 -> v1beta1
 
 ## AWS CLI 업데이트
 $ sudo yum remove awscli
+
 $ curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+
 $ unzip awscliv2.zip
+
 $ sudo ./aws/install
+
