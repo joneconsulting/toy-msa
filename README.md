@@ -8,7 +8,7 @@
 * 최신 버전 (Spring Boot 3.2.0) 은 springboot3.2 브랜치에서 확인하실 수 있습니다.
   
 * OpenJDK 17
-* Spring Boot 3.2.x (3.2.2, 3.2.4, 3.2.7) + Spring Cloud 2023.0.0(2023.0.2) 버전에 맞춰 예제 파일이 업데이트 되었습니다.
+* Spring Boot 3.2.x (3.2.2, 3.2.4, 3.2.7) + Spring Cloud 2023.0.0(2023.0.2) 버전에 맞춰 예제 파일이 업데이트 되었습니다.
 * Spring Security 6 버전으로 회원가입, 로그인, 인증 예제 변경 되었습니다.
 
 > * service-discovery: 버전 변경
