@@ -1,0 +1,19 @@
+version: '3.1'
+services:
+  db:
+    image: mariadb:latest
+    restart: always
+    ports:
+      - "3307:3306"
+    environment:
+      MARIADB_ROOT_PASSWORD: test1357
+      MARIADB_USER: example-user
+      MARIADB_PASSWORD: test1357
+      MARIADB_DATABASE: mydb
+    networks:
+      my-network:
+
+networks:
+  my-network:
+    external: true
+    name: ecommerce-network
