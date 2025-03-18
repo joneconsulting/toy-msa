@@ -21,6 +21,9 @@ spring:
 #    database: h2
     database: MYSQL
     defer-datasource-initialization: true
+  sql:
+    init:
+      mode: always
   datasource:
 #    driver-class-name: org.h2.Driver
 #    url: jdbc:h2:mem:testdb
@@ -31,6 +34,7 @@ spring:
     url: jdbc:mariadb://localhost:3306/mydb
     username: root
     password: test1357
+    data: classpath:data.sql
 
 eureka:
   instance:
