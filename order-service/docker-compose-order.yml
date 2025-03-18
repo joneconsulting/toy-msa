@@ -1,0 +1,21 @@
+# Use root/example as user/password credentials
+version: '3.1'
+
+services:
+  order-service:
+    image: order-service:1.0
+
+    environment:
+      spring.rabbitmq.host: rabbitmq
+      spring.zipkin.base-url: http://zipkin-zipkin-1:9411
+      spring.datasource.url: jdbc:mariadb://mariadb-server:3306/mydb
+      eureka.client.service-url.defaultZone: http://service-discovery:8761/eureka/
+      management.zipkin.tracing.endpoint: http://zipkin-zipkin-1:9411/api/v2/spans
+
+    networks:
+      my-network:
+
+networks:
+  my-network:
+    external: true
+    name: ecommerce-network
