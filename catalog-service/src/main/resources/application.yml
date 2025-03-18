@@ -18,14 +18,19 @@ spring:
       ddl-auto: create-drop
     show-sql: true
     generate-ddl: true
-    database: h2
+#    database: h2
+    database: MYSQL
     defer-datasource-initialization: true
   datasource:
-    driver-class-name: org.h2.Driver
-    url: jdbc:h2:mem:testdb
-    username: sa
-    password:
+#    driver-class-name: org.h2.Driver
+#    url: jdbc:h2:mem:testdb
+#    username: sa
+#    password:
 #    data: classpath:post.sql
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://localhost:3306/mydb
+    username: root
+    password: test1357
 
 eureka:
   instance:
