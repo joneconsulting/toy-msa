@@ -1,5 +1,7 @@
 package com.example.userservice.jpa;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 
 import jakarta.persistence.*;

@@ -18,8 +18,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import javax.swing.text.html.Option;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -38,12 +40,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        UserEntity userEntity = userRepository.findByEmail(username);
+        Optional<UserEntity> optionalUserEntity = userRepository.findByEmail(username);
 
-        if (userEntity == null)
+        if (optionalUserEntity == null)
             throw new UsernameNotFoundException(username + ": not found");
 
-        return new User(userEntity.getEmail(), userEntity.getEncryptedPwd(),
+        return new User(optionalUserEntity.get().getEmail(), optionalUserEntity.get().getEncryptedPwd(),
                 true, true, true, true,
                 new ArrayList<>());
     }
@@ -83,7 +85,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDto getUserByUserId(String userId) {
-        UserEntity userEntity = userRepository.findByUserId(userId);
+        Optional<UserEntity> userEntity = userRepository.findByUserId(userId);
 
         if (userEntity == null)
             throw new UsernameNotFoundException("User not found");
@@ -146,14 +148,14 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDto getUserDetailsByEmail(String email) {
-        UserEntity userEntity = userRepository.findByEmail(email);
-        if (userEntity == null)
+        Optional<UserEntity> optionalUserEntity = userRepository.findByEmail(email);
+        if (optionalUserEntity == null)
             throw new UsernameNotFoundException(email);
 
         ModelMapper mapper = new ModelMapper();
         mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
 
-        UserDto userDto = mapper.map(userEntity, UserDto.class);
+        UserDto userDto = mapper.map(optionalUserEntity.get(), UserDto.class);
         return userDto;
     }
 }
