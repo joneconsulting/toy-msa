@@ -1,7 +1,7 @@
 encrypt:
 #      key: abcdefghijklmnopqrstuvwxyz0123456789
     key-store:
-#        location: file:///C://Work//git-local-repo//Windows_apiEncryptionKey.jks
+#        location: file:///C://Work//git-local-repo//apiEncryptionKey.jks
         location: /apiEncryptionKey.jks
         password: test1234
         alias: apiEncryptionKey

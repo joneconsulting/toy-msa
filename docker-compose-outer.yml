@@ -1,0 +1,35 @@
+services:
+  config-service:
+    image: config-service:lgcns_1
+    container_name: config-service
+    ports:
+      - "8888:8888"
+    networks:
+      my-network:
+
+  service-discovery:
+    image: service-discovery:lgcns_1
+    container_name: service-discovery
+    ports:
+      - "8761:8761"
+    depends_on:
+      - config-service
+    networks:
+      my-network:
+
+  apigateway-service:
+    image: apigateway-service:lgcns_1
+    container_name: apigateway-service
+    ports:
+      - "8000:8000"
+    environment:
+      spring.rabbitmq.host: rabbitmq
+    depends_on:
+      - service-discovery
+    networks:
+      my-network:
+
+networks:
+  my-network:
+    external: true
+    name: ecommerce-network
