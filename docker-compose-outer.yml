@@ -1,4 +1,77 @@
 services:
+  rabbitmq:
+    image: rabbitmq:4.0-management
+    container_name: rabbitmq
+    ports:
+      - "5671:5671"
+      - "15671:15671"
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+    networks:
+      my-network:
+
+  mariadb-server:
+    image: mariadb:latest
+    container_name: mariadb-server
+    ports:
+      - "3306:3306"
+    environment:
+      MARIADB_ROOT_PASSWORD: test1357
+      MARIADB_DATABASE: mydb
+    networks:
+      my-network:
+
+  broker:
+    image: apache/kafka:latest
+    ports:
+      - "9092:9092"
+    container_name: broker
+    environment:
+      KAFKA_NODE_ID: 1
+      KAFKA_PROCESS_ROLES: broker,controller
+      KAFKA_LISTENERS: PLAINTEXT://broker:9092,CONTROLLER://broker:9093
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://broker:9092
+      KAFKA_CONTROLLER_LISTENER_NAMES: CONTROLLER
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT
+      KAFKA_CONTROLLER_QUORUM_VOTERS: 1@broker:9093
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+      KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
+      KAFKA_NUM_PARTITIONS: 3
+    networks:
+      my-network:
+
+  zipkin:
+    image: openzipkin/zipkin
+    container_name: zipkin
+    ports:
+      - "9411:9411"
+    environment:
+      - STORAGE_TYPE=mysql
+      - MYSQL_DB=zipkin
+      - MYSQL_USER=zipkin
+      - MYSQL_PASS=zipkin
+      - MYSQL_HOST=mysql
+    networks:
+      my-network:
+  zipkin-db:
+    image: mysql:5.7
+    platform: linux/amd64
+    container_name: zipkin-db
+    volumes:
+      - ./zipkin/initdb.d:/docker-entrypoint-initdb.d
+    environment:
+      MYSQL_DATABASE: zipkin
+      MYSQL_USER: zipkin
+      MYSQL_PASSWORD: zipkin
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3307:3306"
+    networks:
+      my-network:
+
   config-service:
     image: config-service:lgcns_1
     container_name: config-service
