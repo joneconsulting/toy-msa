@@ -12,14 +12,14 @@ spring:
   zipkin:
     base-url: http://localhost:9411
     enabled: true
-#  rabbitmq:
-#    host: 127.0.0.1
-#    port: 5672
-#    username: guest
-#    password: guest
-#    listener:
-#      simple:
-#        prefetch: 5
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+    listener:
+      simple:
+        prefetch: 5
   h2:
     console:
       enabled: true
