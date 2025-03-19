@@ -1,0 +1,43 @@
+services:
+  user-service:
+#    image: edowon0623/user-service:lgcns_1
+    image: user-service:1.1
+#    ports:
+#      - "60000:60000"
+    environment:
+      spring.cloud.config.uri: http://config-service:8888
+      spring.rabbitmq.host: rabbitmq
+      spring.zipkin.base-url: http://zipkin-zipkin-1:9411
+      eureka.client.service-url.defaultZone: http://service-discovery:8761/eureka/
+      management.zipkin.tracing.endpoint: http://zipkin-zipkin-1:9411/api/v2/spans
+#    depends_on:
+#      - config-service
+    networks:
+      my-network:
+#        ipv4_address: 172.18.0.12
+
+  order-service:
+    image: edowon0623/order-service:lgcns_1
+    environment:
+      spring.rabbitmq.host: rabbitmq
+      spring.zipkin.base-url: http://zipkin-zipkin-1:9411
+      spring.datasource.url: jdbc:mariadb://mariadb-server:3306/mydb
+      eureka.client.service-url.defaultZone: http://service-discovery:8761/eureka/
+      management.zipkin.tracing.endpoint: http://zipkin-zipkin-1:9411/api/v2/spans
+    networks:
+      my-network:
+
+  catalog-service:
+    image: edowon0623/catalog-service:lgcns_1
+    environment:
+      spring.zipkin.base-url: http://zipkin-zipkin-1:9411
+      spring.datasource.url: jdbc:mariadb://mariadb-server:3306/mydb
+      eureka.client.service-url.defaultZone: http://service-discovery:8761/eureka/
+      management.zipkin.tracing.endpoint: http://zipkin-zipkin-1:9411/api/v2/spans
+    networks:
+      my-network:
+
+networks:
+  my-network:
+    external: true
+    name: ecommerce-network
