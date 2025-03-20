@@ -1,16 +1,15 @@
 services:
   user-service:
-#    image: edowon0623/user-service:lgcns_1
-    image: user-service:1.1
-#    ports:
-#      - "60000:60000"
+    image: edowon0623/user-service:lgcns_1
+    ports:
+      - "60000:60000"
     container_name: user-service
     environment:
       spring.cloud.config.uri: http://config-service:8888
       spring.rabbitmq.host: rabbitmq
-      spring.zipkin.base-url: http://zipkin-zipkin-1:9411
+      spring.zipkin.base-url: http://zipkin:9411
       eureka.client.service-url.defaultZone: http://service-discovery:8761/eureka/
-      management.zipkin.tracing.endpoint: http://zipkin-zipkin-1:9411/api/v2/spans
+      management.zipkin.tracing.endpoint: http://zipkin:9411/api/v2/spans
 #    depends_on:
 #      - config-service
     networks:
@@ -22,10 +21,10 @@ services:
     container_name: order-service
     environment:
       spring.rabbitmq.host: rabbitmq
-      spring.zipkin.base-url: http://zipkin-zipkin-1:9411
+      spring.zipkin.base-url: http://zipkin:9411
       spring.datasource.url: jdbc:mariadb://mariadb-server:3306/mydb
       eureka.client.service-url.defaultZone: http://service-discovery:8761/eureka/
-      management.zipkin.tracing.endpoint: http://zipkin-zipkin-1:9411/api/v2/spans
+      management.zipkin.tracing.endpoint: http://zipkin:9411/api/v2/spans
     networks:
       my-network:
 
@@ -33,10 +32,10 @@ services:
     image: edowon0623/catalog-service:lgcns_1
     container_name: catalog-service
     environment:
-      spring.zipkin.base-url: http://zipkin-zipkin-1:9411
+      spring.zipkin.base-url: http://zipkin:9411
       spring.datasource.url: jdbc:mariadb://mariadb-server:3306/mydb
       eureka.client.service-url.defaultZone: http://service-discovery:8761/eureka/
-      management.zipkin.tracing.endpoint: http://zipkin-zipkin-1:9411/api/v2/spans
+      management.zipkin.tracing.endpoint: http://zipkin:9411/api/v2/spans
     networks:
       my-network:
 
