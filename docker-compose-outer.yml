@@ -75,6 +75,9 @@ services:
   config-service:
     image: config-service:lgcns_1
     container_name: config-service
+    environment:
+      encrypt.key-store.location: file:///apiEncryptionKey.jks
+      MYSQL_DATABASE: zipkin
     ports:
       - "8888:8888"
     networks:
