@@ -1,0 +1,82 @@
+server:
+  port: 60000
+
+spring:
+#  config:
+#    import: optional:configserver:http://127.0.0.1:8888/
+  cloud:
+    config:
+      name: user-service
+  application:
+    name: user-service
+  zipkin:
+    base-url: http://localhost:9411
+    enabled: true
+
+#  rabbitmq:
+#    host: 127.0.0.1
+#    port: 5672
+#    username: guest
+#    password: guest
+#    listener:
+#      simple:
+#        prefetch: 5
+  h2:
+    console:
+      enabled: true
+      settings:
+        web-allow-others: true
+      path: /h2-console
+  jpa:
+    hibernate:
+      ddl-auto: update
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password:
+#eureka:
+#  instance:
+#    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+#  #    prefer-ip-address: true
+#  #    ip-address: ${server.address}
+#  client:
+#    service-url:
+#      defaultZone: http://127.0.0.1:8761/eureka
+#    fetch-registry: true
+#    register-with-eureka: true
+
+greeting:
+  message: Welcome to the Simple E-commerce.
+
+logging:
+  level:
+    com.example.userservice.client: DEBUG
+  pattern:
+    correlation: '%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]'
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0
+    propagation:
+      consume: B3
+      produce: B3
+  zipkin:
+    tracing:
+      endpoint: http://localhost:9411/api/v2/spans
+
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+gateway:
+  ip: 10.204.136.204
+
+token:
+  expiration_time: 86400000
+  secret: user_token_test
+
+order-service:
+  url: http://localhost:${wiremock.server.port}

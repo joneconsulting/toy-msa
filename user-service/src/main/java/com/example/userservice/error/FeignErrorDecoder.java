@@ -29,6 +29,18 @@ public class FeignErrorDecoder implements ErrorDecoder {
                            env.getProperty("order-service.exception.order-is-empty"));
                 }
                 break;
+            case 500:
+                if (methodKey.contains("getOrders")) {
+                    return new ResponseStatusException(HttpStatus.valueOf(response.status()),
+                            "User's orders is empty [Inter Server Error]");
+                }
+                break;
+            case 503:
+                if (methodKey.contains("getOrders")) {
+                    return new CustomFeignException(response.status(),
+                            "User's orders is empty [No order-service available]");
+                }
+                break;
             default:
                 return new Exception(response.reason());
         }

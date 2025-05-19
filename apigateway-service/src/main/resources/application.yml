@@ -88,19 +88,19 @@ spring:
             - AddRequestHeader=first-request, first-request-header-by-yaml
             - AddResponseHeader=first-response, first-response-header-from-yaml
             - CustomFilter
-        - id: second-service
-          uri: lb://MY-SECOND-SERVICE
-          predicates:
-            - Path=/second-service/**
-          filters:
-            - AddRequestHeader=second-request, second-request-header-by-yaml
-            - AddResponseHeader=second-response, second-response-header-from-yaml
-            - name: CustomFilter
-            - name: LoggingFilter
-              args:
-                baseMessage: Hi, there.
-                preLogger: true
-                postLogger: true
+#        - id: second-service
+#          uri: lb://MY-SECOND-SERVICE
+#          predicates:
+#            - Path=/second-service/**
+#          filters:
+#            - AddRequestHeader=second-request, second-request-header-by-yaml
+#            - AddResponseHeader=second-response, second-response-header-from-yaml
+#            - name: CustomFilter
+#            - name: LoggingFilter
+#              args:
+#                baseMessage: Hi, there.
+#                preLogger: true
+#                postLogger: true
 
 #token:
 #  secret: user_token

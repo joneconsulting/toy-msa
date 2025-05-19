@@ -8,7 +8,6 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-@AllArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Schema(description = "A domain object for user detail information")
 public class ResponseUser {
